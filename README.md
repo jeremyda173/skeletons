@@ -1,167 +1,112 @@
 # 💀 Skeleton Loader UI
 
-Beautiful and customizable skeleton loading components for React applications with smooth animations and adaptive design.
+Una biblioteca completa de componentes skeleton para React con animaciones suaves y diseño adaptativo. Proporciona estados de carga elegantes para mejorar la experiencia del usuario durante la carga de contenido.
 
 ![React](https://img.shields.io/badge/React-19.1-blue)
 ![Styled Components](https://img.shields.io/badge/Styled--Components-6.x-pink)
 ![Vite](https://img.shields.io/badge/Vite-7.x-purple)
 
-## ✨ Features
+## 🎯 ¿Qué es este proyecto?
 
-- 🎨 **Multiple Skeleton Types** - Text, Avatar, Image, Card, List, Table, Profile, and Form skeletons
-- 🌈 **Smooth Animations** - Shimmer and Pulse animation options
-- 🎯 **Highly Customizable** - Adjust size, shape, colors, and animation speed
-- 📱 **Responsive Design** - Works perfectly on all screen sizes
-- 🌓 **Dark Mode Support** - Built-in theme support for light and dark modes
-- 🧩 **Modular Architecture** - Clean code organized in logical folders
-- 🚀 **Easy to Use** - Simple API with sensible defaults
-- ⚡ **Performance Optimized** - Lightweight and efficient
+**Skeleton Loader UI** es una colección de componentes de carga que muestran la estructura de tu contenido mientras se carga la información real. En lugar de mostrar pantallas en blanco o spinners genéricos, los skeletons replican la forma y el diseño de tu contenido final, creando una experiencia de carga más fluida y profesional.
 
-## 📦 Installation
+### ¿Por qué usar Skeleton Loaders?
+
+- **Mejor UX**: Los usuarios ven inmediatamente la estructura del contenido
+- **Percepción de velocidad**: El contenido parece cargar más rápido
+- **Reducción de ansiedad**: Los usuarios saben qué esperar
+- **Profesionalismo**: Interfaz más pulida y moderna
+
+## ✨ Características Principales
+
+- 🎨 **13 Tipos de Skeletons** - Texto, Avatar, Imagen, Card, Lista, Tabla, Perfil, Formulario, Botón, Blog, Comentarios, Grid
+- 🌈 **Animaciones Suaves** - Shimmer y Pulse con efectos CSS optimizados
+- 🎯 **Altamente Personalizable** - Ajusta tamaños, colores, formas y velocidad
+- 📱 **Diseño Responsivo** - Funciona perfectamente en todos los dispositivos
+- 🌓 **Soporte Dark Mode** - Temas claro y oscuro integrados
+- 🧩 **Arquitectura Modular** - Código limpio organizado en carpetas lógicas
+- 🚀 **Fácil de Usar** - API simple con valores por defecto sensatos
+- ⚡ **Optimizado** - Ligero y eficiente
+
+## 📦 Componentes Disponibles
+
+### Componentes Básicos
+- **SkeletonText** - Líneas de texto con ancho personalizable
+- **SkeletonAvatar** - Avatares circulares y cuadrados
+- **SkeletonImage** - Placeholders de imágenes responsivos
+- **SkeletonButton** - Estados de carga para botones
+
+### Componentes Compuestos
+- **SkeletonCard** - 4 variantes (default, with-image, with-avatar, with-footer)
+- **SkeletonList** - 3 variantes (default, with-avatar, simple)
+- **SkeletonTable** - 5 variantes (default, with-actions, with-avatars, compact, with-pagination)
+- **SkeletonProfile** - 2 variantes (default, detailed)
+- **SkeletonForm** - Formularios con campos personalizables
+- **SkeletonBlog** - 3 variantes de posts de blog
+- **SkeletonComment** - Hilos de comentarios con respuestas anidadas
+- **SkeletonGrid** - Layouts de cuadrícula pre-construidos
+
+## 🚀 Instalación y Uso Rápido
 
 ```bash
-# Clone the repository
+# Clonar el repositorio
 git clone <repository-url>
-
-# Navigate to the project directory
 cd skeleton-ui
 
-# Install dependencies
+# Instalar dependencias
 npm install
 
-# Start development server
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-## 🚀 Quick Start
+Visita `http://localhost:5174` para ver la demo interactiva.
+
+### Uso Básico
 
 ```jsx
 import { SkeletonCard, SkeletonText, SkeletonAvatar } from './components/skeletons';
+import useLoading from './hooks/useLoading';
 
-function MyComponent() {
-  const [loading, setLoading] = useState(true);
+function MiComponente() {
+  const { loading } = useLoading(2000); // 2 segundos
 
-  return (
-    <>
-      {loading ? (
-        <SkeletonCard variant="with-image" animation="shimmer" />
-      ) : (
-        <ActualContent />
-      )}
-    </>
+  return loading ? (
+    <SkeletonCard variant="with-image" animation="shimmer" />
+  ) : (
+    <ContenidoReal />
   );
 }
 ```
 
-## 📚 Available Components
+## 🎨 Temas y Personalización
 
-### SkeletonText
-Display text loading placeholders with customizable lines.
-
-```jsx
-<SkeletonText 
-  lines={3} 
-  width="100%" 
-  lastLineWidth="70%"
-  lineHeight="16px"
-  gap="10px"
-  animation="shimmer"
-  radius="4px"
-/>
-```
-
-### SkeletonAvatar
-Profile picture placeholders with optional text labels.
-
-```jsx
-<SkeletonAvatar 
-  size="50px" 
-  withText={true}
-  textLines={2}
-  animation="shimmer"
-  shape="circle" // or "square"
-/>
-```
-
-### SkeletonImage
-Image loading placeholders with responsive dimensions.
-
-```jsx
-<SkeletonImage 
-  width="100%" 
-  height="200px"
-  radius="8px"
-  animation="shimmer"
-  aspectRatio="16/9"
-/>
-```
-
-### SkeletonCard
-Complete card layouts for various use cases.
-
-```jsx
-<SkeletonCard 
-  variant="with-image" // default, with-image, with-avatar, with-footer
-  animation="shimmer"
-/>
-```
-
-### SkeletonList
-List item placeholders perfect for feeds and directories.
-
-```jsx
-<SkeletonList 
-  items={5} 
-  variant="with-avatar" // default, with-avatar, simple
-  animation="shimmer"
-/>
-```
-
-### SkeletonTable
-Data table loading placeholder with customizable rows and columns.
-
-```jsx
-<SkeletonTable 
-  rows={5} 
-  columns={4}
-  columnWidths="1fr 2fr 1fr 1fr"
-  animation="shimmer"
-/>
-```
-
-### SkeletonProfile
-User profile loading states with different detail levels.
-
-```jsx
-<SkeletonProfile 
-  variant="detailed" // default, detailed
-  animation="shimmer"
-/>
-```
-
-### SkeletonForm
-Form loading states with input fields and buttons.
-
-```jsx
-<SkeletonForm 
-  fields={4}
-  animation="shimmer"
-/>
-```
-
-## 🎨 Theming
-
-Customize skeleton colors using the theme provider:
-
+### Modo Oscuro/Claro
 ```jsx
 import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './styles/theme';
 
+function App() {
+  const [isDark, setIsDark] = useState(false);
+
+  return (
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <TuApp />
+    </ThemeProvider>
+  );
+}
+```
+
+### Tema Personalizado
+```jsx
 const customTheme = {
-  skeletonBg: '#e0e0e0',
-  skeletonShimmer: '#f0f0f0',
-  background: '#ffffff',
-  text: '#333333',
-  border: '#e0e0e0',
+  skeletonBg: '#tu-color',
+  skeletonShimmer: '#tu-color',
+  background: '#tu-color',
+  text: '#tu-color',
+  border: '#tu-color',
+  accentPrimary: '#tu-color',
+  accentSecondary: '#tu-color',
 };
 
 <ThemeProvider theme={customTheme}>
@@ -169,14 +114,26 @@ const customTheme = {
 </ThemeProvider>
 ```
 
-## 🗂️ Project Structure
+## 🎭 Tipos de Animación
+
+### Shimmer (Por defecto)
+Efecto de onda suave que se desplaza por el skeleton.
+
+### Pulse
+Efecto de respiración que desvanece el skeleton.
+
+```jsx
+<SkeletonCard animation="pulse" />
+```
+
+## 🗂️ Estructura del Proyecto
 
 ```
 skeleton-ui/
 ├── src/
 │   ├── components/
-│   │   ├── skeletons/          # Skeleton components
-│   │   │   ├── SkeletonBase.jsx
+│   │   ├── skeletons/          # Componentes skeleton
+│   │   │   ├── SkeletonBase.jsx # Componente base con animaciones
 │   │   │   ├── SkeletonText.jsx
 │   │   │   ├── SkeletonAvatar.jsx
 │   │   │   ├── SkeletonImage.jsx
@@ -185,97 +142,144 @@ skeleton-ui/
 │   │   │   ├── SkeletonTable.jsx
 │   │   │   ├── SkeletonProfile.jsx
 │   │   │   ├── SkeletonForm.jsx
+│   │   │   ├── SkeletonButton.jsx
+│   │   │   ├── SkeletonBlog.jsx
+│   │   │   ├── SkeletonComment.jsx
+│   │   │   ├── SkeletonGrid.jsx
 │   │   │   └── index.jsx
-│   │   ├── examples/           # Example implementations
+│   │   ├── examples/           # Ejemplos de implementación
 │   │   │   ├── CardExample.jsx
 │   │   │   ├── ProfileExample.jsx
 │   │   │   ├── ListExample.jsx
 │   │   │   ├── TableExample.jsx
 │   │   │   └── index.jsx
-│   │   └── ui/                 # UI utilities
+│   │   └── ui/                 # Utilidades de UI
 │   │       ├── Section.jsx
-│   │       └── Controls.jsx
-│   ├── hooks/                  # Custom hooks
-│   │   └── useLoading.jsx
-│   ├── styles/                 # Styles and themes
+│   │       ├── Controls.jsx
+│   │       └── index.jsx
+│   ├── hooks/                  # Hooks personalizados
+│   │   ├── useLoading.jsx
+│   │   └── index.jsx
+│   ├── styles/                # Estilos y temas
 │   │   ├── theme.js
 │   │   └── GlobalStyles.js
+│   ├── utils/                 # Utilidades
+│   │   └── constants.js
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
 └── package.json
 ```
 
-## 🎭 Animation Types
+## 🔧 Hook Personalizado
 
-### Shimmer (Default)
-A smooth wave-like animation that moves across the skeleton.
-
-### Pulse
-A breathing effect that fades the skeleton in and out.
-
-```jsx
-<SkeletonCard animation="pulse" />
-```
-
-## 🔧 Custom Hook
-
-Use the `useLoading` hook to simulate loading states:
+Usa el hook `useLoading` para simular estados de carga:
 
 ```jsx
 import useLoading from './hooks/useLoading';
 
-function MyComponent() {
-  const { loading, reload } = useLoading(2000); // 2 seconds
+function MiComponente() {
+  const { loading, reload } = useLoading(2000); // 2 segundos
 
   return (
     <>
-      {loading ? <SkeletonCard /> : <ActualCard />}
-      <button onClick={reload}>Reload</button>
+      {loading ? <SkeletonCard /> : <TarjetaReal />}
+      <button onClick={reload}>Recargar</button>
     </>
   );
 }
 ```
 
-## 🌟 Best Practices
-
-1. **Match the skeleton to your content** - Use skeleton shapes that closely match your actual content layout
-2. **Keep animations subtle** - Don't distract users with overly flashy animations
-3. **Show skeletons for 0.5-2 seconds** - Too short is jarring, too long is frustrating
-4. **Use consistent timing** - Keep animation speeds consistent across your app
-5. **Consider accessibility** - Some users may prefer reduced motion
-
-## 📝 Scripts
+## 📝 Scripts Disponibles
 
 ```bash
-# Development
+# Desarrollo
 npm run dev
 
-# Build for production
+# Construir para producción
 npm run build
 
-# Preview production build
+# Vista previa de producción
 npm run preview
 
-# Lint code
+# Linter
 npm run lint
 ```
 
-## 🤝 Contributing
+## 🌟 Casos de Uso Populares
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### Cargando una Lista
+```jsx
+<SkeletonList items={10} variant="with-avatar" />
+```
 
-## 📄 License
+### Cargando Productos
+```jsx
+<SkeletonGrid items={6} cardVariant="with-image" />
+```
 
-This project is open source and available under the MIT License.
+### Cargando Perfil
+```jsx
+<SkeletonProfile variant="detailed" />
+```
 
-## 🙏 Acknowledgments
+### Cargando Blog
+```jsx
+<SkeletonBlog variant="full" />
+```
 
-Built with:
+### Cargando Tabla de Datos
+```jsx
+<SkeletonTable rows={8} columns={5} variant="with-actions" />
+```
+
+## 🎓 Mejores Prácticas
+
+1. **Coincide con tu Layout**: Haz que los skeletons coincidan con tu contenido real
+2. **Tiempo de Carga**: Mantén los estados de carga entre 0.5-2 segundos
+3. **Animaciones Consistentes**: Usa el mismo tipo de animación en toda tu app
+4. **Responsive**: Prueba los skeletons en diferentes tamaños de pantalla
+5. **Accesibilidad**: Considera usuarios que prefieren movimiento reducido
+
+## 🛠️ Stack Técnico
+
+- **React** 19.1.1 - Biblioteca de UI
+- **Styled Components** 6.x - CSS-in-JS
+- **Vite** 7.x - Herramienta de construcción
+- **ESLint** - Calidad de código
+
+## 📊 Estadísticas del Proyecto
+
+- **Componentes**: 13 skeletons + 4 ejemplos = 17 total
+- **Variantes**: 15+ configuraciones únicas
+- **Tipos de Animación**: 2 (Shimmer, Pulse)
+- **Temas**: 2 (Claro, Oscuro)
+- **Ejemplos de Código**: 50+ patrones
+- **Casos de Uso**: 20+ escenarios cubiertos
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+
+## 🙏 Agradecimientos
+
+Construido con:
 - [React](https://react.dev/)
 - [Vite](https://vitejs.dev/)
 - [Styled Components](https://styled-components.com/)
 
 ---
 
-Made with ❤️ for better loading experiences
+**Hecho con ❤️ por Mikens**
+
+Para mejores experiencias de carga ✨
