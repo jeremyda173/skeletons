@@ -280,6 +280,6 @@ Construido con:
 
 ---
 
-**Hecho con ❤️ por Mikens**
+**Hecho por Mikens**
 
 Para mejores experiencias de carga ✨
