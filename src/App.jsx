@@ -23,34 +23,68 @@ import { ControlPanel, ControlGroup, Button, Select, Toggle } from './components
 const AppContainer = styled.div`
   min-height: 100vh;
   background: ${props => props.theme.background};
-  padding: 60px 20px;
+  padding: 20px 16px;
+  
+  @media (min-width: 768px) {
+    padding: 40px 24px;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 60px 20px;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 `;
 
 const Header = styled.header`
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
+  
+  @media (min-width: 768px) {
+    margin-bottom: 50px;
+  }
+  
+  @media (min-width: 1024px) {
+    margin-bottom: 60px;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 800;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
   background: linear-gradient(135deg, ${props => props.theme.accentPrimary} 0%, ${props => props.theme.accentSecondary} 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  
+  @media (min-width: 768px) {
+    font-size: 40px;
+    margin: 0 0 16px 0;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 48px;
+  }
 `;
 
 const Subtitle = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   color: ${props => props.theme.text};
   opacity: 0.8;
   margin: 0;
+  
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 20px;
+  }
 `;
 
 const Badge = styled.span`

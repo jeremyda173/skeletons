@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const ControlPanel = styled.div`
   background: ${props => props.theme.controlBg};
   border: 2px solid ${props => props.theme.controlBorder};
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -20,13 +20,30 @@ export const ControlPanel = styled.div`
     height: 3px;
     background: linear-gradient(90deg, ${props => props.theme.accentPrimary}, ${props => props.theme.accentSecondary});
   }
+  
+  @media (min-width: 768px) {
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 export const ControlGroup = styled.div`
   display: flex;
-  gap: 24px;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 16px;
+  
+  @media (min-width: 480px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
 `;
 
 export const Button = styled.button`

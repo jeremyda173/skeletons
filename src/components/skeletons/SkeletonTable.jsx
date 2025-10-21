@@ -5,31 +5,46 @@ import SkeletonAvatar from './SkeletonAvatar';
 const TableWrapper = styled.div`
   width: 100%;
   border: 2px solid ${props => props.theme?.cardBorder || '#e0e0e0'};
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   background: ${props => props.theme?.cardBg || '#ffffff'};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  @media (min-width: 768px) {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const TableHeader = styled.div`
   display: grid;
   grid-template-columns: ${props => props.columns};
-  gap: 16px;
-  padding: 16px;
+  gap: 12px;
+  padding: 12px;
   background: ${props => props.theme?.cardBorder || '#f8f9fa'};
   border-bottom: 2px solid ${props => props.theme?.cardBorder || '#e0e0e0'};
   opacity: 0.5;
+  
+  @media (min-width: 768px) {
+    gap: 16px;
+    padding: 16px;
+  }
 `;
 
 const TableRow = styled.div`
   display: grid;
   grid-template-columns: ${props => props.columns};
-  gap: 16px;
-  padding: 16px;
+  gap: 12px;
+  padding: 12px;
   border-bottom: 2px solid ${props => props.theme?.cardBorder || '#f0f0f0'};
   
   &:last-child {
     border-bottom: none;
+  }
+  
+  @media (min-width: 768px) {
+    gap: 16px;
+    padding: 16px;
   }
 `;
 
