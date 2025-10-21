@@ -89,15 +89,22 @@ const Subtitle = styled.p`
 
 const Badge = styled.span`
   display: inline-block;
-  padding: 8px 16px;
+  padding: 6px 12px;
   background: linear-gradient(135deg, ${props => props.theme.accentPrimary}, ${props => props.theme.accentSecondary});
   color: white;
-  border-radius: 20px;
-  font-size: 12px;
+  border-radius: 16px;
+  font-size: 11px;
   font-weight: 600;
   margin: 0 4px;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
   transition: all 0.3s ease;
+  
+  @media (min-width: 768px) {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
 
   &:hover {
     transform: translateY(-2px);
@@ -108,18 +115,37 @@ const Badge = styled.span`
 const Divider = styled.hr`
   border: none;
   border-top: 2px solid ${props => props.theme.border};
-  margin: 48px 0;
+  margin: 32px 0;
   opacity: 0.3;
+  
+  @media (min-width: 768px) {
+    margin: 40px 0;
+  }
+  
+  @media (min-width: 1024px) {
+    margin: 48px 0;
+  }
 `;
 
 const Footer = styled.footer`
   text-align: center;
-  margin-top: 80px;
-  padding: 40px 20px;
+  margin-top: 40px;
+  padding: 24px 16px;
   color: ${props => props.theme.text};
   opacity: 0.7;
-  font-size: 14px;
+  font-size: 13px;
   border-top: 2px solid ${props => props.theme.border};
+  
+  @media (min-width: 768px) {
+    margin-top: 60px;
+    padding: 32px 20px;
+    font-size: 14px;
+  }
+  
+  @media (min-width: 1024px) {
+    margin-top: 80px;
+    padding: 40px 20px;
+  }
 `;
 
 function App() {

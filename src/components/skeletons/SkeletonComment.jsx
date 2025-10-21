@@ -5,14 +5,21 @@ import SkeletonText from './SkeletonText';
 
 const CommentWrapper = styled.div`
   display: flex;
-  gap: 12px;
-  padding: 16px;
+  gap: 10px;
+  padding: 12px;
   background: ${props => props.theme?.cardBg || '#ffffff'};
   border: 2px solid ${props => props.theme?.cardBorder || '#e0e0e0'};
-  border-radius: 12px;
-  margin-bottom: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   position: relative;
+  
+  @media (min-width: 768px) {
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
   
   ${props => props.isReply && `
     &::before {

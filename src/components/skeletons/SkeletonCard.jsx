@@ -45,6 +45,26 @@ const CardFooter = styled.div`
   }
 `;
 
+const CardImage = styled.div`
+  width: 100%;
+  height: 140px;
+  background: ${props => props.theme?.skeletonBg || '#e0e0e0'};
+  position: relative;
+  overflow: hidden;
+  
+  @media (min-width: 480px) {
+    height: 160px;
+  }
+  
+  @media (min-width: 768px) {
+    height: 180px;
+  }
+  
+  @media (min-width: 1024px) {
+    height: 200px;
+  }
+`;
+
 const SkeletonCard = ({ 
   variant = 'default', // default, with-image, with-avatar, with-footer
   animation = 'shimmer'
