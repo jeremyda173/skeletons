@@ -476,7 +476,7 @@ function App() {
           </Section>
 
           <Footer>
-            <p>Made by Mikens</p>
+            <p>Hecho por Mikens</p>
           </Footer>
         </Container>
       </AppContainer>
