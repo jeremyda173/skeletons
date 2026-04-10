@@ -1,1 +1,1 @@
-export { default } from './SkeletonButton'; 
+export { default } from '@/components/skeletons/SkeletonButton/SkeletonButton';
