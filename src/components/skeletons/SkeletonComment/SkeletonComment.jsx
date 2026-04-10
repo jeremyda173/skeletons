@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import SkeletonBase from '../SkeletonBase';
-import SkeletonAvatar from '../SkeletonAvatar';
-import SkeletonText from '../SkeletonText';
+import SkeletonBase from '@/components/skeletons/SkeletonBase';
+import SkeletonAvatar from '@/components/skeletons/SkeletonAvatar';
+import SkeletonText from '@/components/skeletons/SkeletonText';
 
 const CommentWrapper = styled.div`
   display: flex;
