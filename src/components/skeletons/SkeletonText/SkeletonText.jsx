@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SkeletonBase from '../SkeletonBase';
+import SkeletonBase from '@/components/skeletons/SkeletonBase';
 
 const TextWrapper = styled.div`
   width: 100%;
