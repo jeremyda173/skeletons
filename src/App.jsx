@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import GlobalStyles from './styles/GlobalStyles';
-import { lightTheme, darkTheme } from './styles/theme';
+import GlobalStyles from '@/styles/GlobalStyles';
+import { lightTheme, darkTheme } from '@/styles/theme';
 import {
   SkeletonText,
   SkeletonAvatar,
@@ -15,10 +15,10 @@ import {
   SkeletonBlog,
   SkeletonCommentList,
   SkeletonGrid,
-} from './components/skeletons';
-import { CardExample, ProfileExample, ListExample, TableExample } from './components/examples';
-import { Section, SectionTitle, SectionDescription, Grid, DemoBox, Label } from './components/ui/Section';
-import { ControlPanel, ControlGroup, Button, Select, Toggle } from './components/ui/Controls';
+} from '@/components/skeletons';
+import { CardExample, ProfileExample, ListExample, TableExample } from '@/components/examples';
+import { Section, SectionTitle, SectionDescription, Grid, DemoBox, Label } from '@/components/ui/Section';
+import { ControlPanel, ControlGroup, Button, Select, Toggle } from '@/components/ui/Controls';
 
 const AppContainer = styled.div`
   min-height: 100vh;
