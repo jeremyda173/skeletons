@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 export { default as SkeletonBase } from './SkeletonBase';
 export { default as SkeletonText } from './SkeletonText';
 export { default as SkeletonAvatar } from './SkeletonAvatar';

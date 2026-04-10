@@ -1,12 +1,8 @@
-# 💀 Skeleton Loader UI
+# Skeleton Loader UI
 
 Una biblioteca completa de componentes skeleton para React con animaciones suaves y diseño adaptativo. Proporciona estados de carga elegantes para mejorar la experiencia del usuario durante la carga de contenido.
 
-![React](https://img.shields.io/badge/React-19.1-blue)
-![Styled Components](https://img.shields.io/badge/Styled--Components-6.x-pink)
-![Vite](https://img.shields.io/badge/Vite-7.x-purple)
-
-## 🎯 ¿Qué es este proyecto?
+## ¿Qué es este proyecto?
 
 **Skeleton Loader UI** es una colección de componentes de carga que muestran la estructura de tu contenido mientras se carga la información real. En lugar de mostrar pantallas en blanco o spinners genéricos, los skeletons replican la forma y el diseño de tu contenido final, creando una experiencia de carga más fluida y profesional.
 
@@ -17,18 +13,18 @@ Una biblioteca completa de componentes skeleton para React con animaciones suave
 - **Reducción de ansiedad**: Los usuarios saben qué esperar
 - **Profesionalismo**: Interfaz más pulida y moderna
 
-## ✨ Características Principales
+## Características Principales
 
-- 🎨 **13 Tipos de Skeletons** - Texto, Avatar, Imagen, Card, Lista, Tabla, Perfil, Formulario, Botón, Blog, Comentarios, Grid
-- 🌈 **Animaciones Suaves** - Shimmer y Pulse con efectos CSS optimizados
-- 🎯 **Altamente Personalizable** - Ajusta tamaños, colores, formas y velocidad
-- 📱 **Diseño Responsivo** - Funciona perfectamente en todos los dispositivos
-- 🌓 **Soporte Dark Mode** - Temas claro y oscuro integrados
-- 🧩 **Arquitectura Modular** - Código limpio organizado en carpetas lógicas
-- 🚀 **Fácil de Usar** - API simple con valores por defecto sensatos
-- ⚡ **Optimizado** - Ligero y eficiente
+- **13 Tipos de Skeletons** - Texto, Avatar, Imagen, Card, Lista, Tabla, Perfil, Formulario, Botón, Blog, Comentarios, Grid
+- **Animaciones Suaves** - Shimmer y Pulse con efectos CSS optimizados
+- **Altamente Personalizable** - Ajusta tamaños, colores, formas y velocidad
+- **Diseño Responsivo** - Funciona perfectamente en todos los dispositivos
+- **Soporte Dark Mode** - Temas claro y oscuro integrados
+- **Arquitectura Modular** - Código limpio organizado en carpetas lógicas
+- **Fácil de Usar** - API simple con valores por defecto sensatos
+- **Optimizado** - Ligero y eficiente
 
-## 📦 Componentes Disponibles
+## Componentes Disponibles
 
 ### Componentes Básicos
 - **SkeletonText** - Líneas de texto con ancho personalizable
@@ -46,30 +42,35 @@ Una biblioteca completa de componentes skeleton para React con animaciones suave
 - **SkeletonComment** - Hilos de comentarios con respuestas anidadas
 - **SkeletonGrid** - Layouts de cuadrícula pre-construidos
 
-## 🚀 Instalación y Uso Rápido
+## Instalación y Build
+
+Si has clonado este repositorio y quieres generar los archivos para usar en otros proyectos:
 
 ```bash
-# Clonar el repositorio
-git clone <repository-url>
-cd skeleton-ui
-
-# Instalar dependencias
+# 1. Instalar dependencias
 npm install
 
-# Iniciar servidor de desarrollo
-npm run dev
+# 2. Construir la librería (genera la carpeta /dist)
+npm run build
+
+# 3. (Opcional) Vincular localmente para probar en otro proyecto
+npm link
 ```
 
-Visita `http://localhost:5174` para ver la demo interactiva.
+## Uso como Librería
 
-### Uso Básico
+Una vez que tengas la librería instalada o vinculada en tu proyecto principal, puedes importar los componentes de la siguiente manera:
 
 ```jsx
-import { SkeletonCard, SkeletonText, SkeletonAvatar } from './components/skeletons';
-import useLoading from './hooks/useLoading';
+import { 
+  SkeletonCard, 
+  SkeletonText, 
+  SkeletonAvatar,
+  useLoading 
+} from 'skeleton-ui';
 
 function MiComponente() {
-  const { loading } = useLoading(2000); // 2 segundos
+  const { loading } = useLoading(2000);
 
   return loading ? (
     <SkeletonCard variant="with-image" animation="shimmer" />
@@ -79,7 +80,7 @@ function MiComponente() {
 }
 ```
 
-## 🎨 Temas y Personalización
+## Temas y Personalización
 
 ### Modo Oscuro/Claro
 ```jsx
@@ -114,7 +115,7 @@ const customTheme = {
 </ThemeProvider>
 ```
 
-## 🎭 Tipos de Animación
+## Tipos de Animación
 
 ### Shimmer (Por defecto)
 Efecto de onda suave que se desplaza por el skeleton.
@@ -126,7 +127,7 @@ Efecto de respiración que desvanece el skeleton.
 <SkeletonCard animation="pulse" />
 ```
 
-## 🗂️ Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 skeleton-ui/
@@ -171,15 +172,15 @@ skeleton-ui/
 └── package.json
 ```
 
-## 🔧 Hook Personalizado
+## Hook Personalizado
 
 Usa el hook `useLoading` para simular estados de carga:
 
 ```jsx
-import useLoading from './hooks/useLoading';
+import { useLoading, SkeletonCard } from 'skeleton-ui';
 
 function MiComponente() {
-  const { loading, reload } = useLoading(2000); // 2 segundos
+  const { loading, reload } = useLoading(2000);
 
   return (
     <>
@@ -190,7 +191,7 @@ function MiComponente() {
 }
 ```
 
-## 📝 Scripts Disponibles
+## Scripts Disponibles
 
 ```bash
 # Desarrollo
@@ -206,7 +207,7 @@ npm run preview
 npm run lint
 ```
 
-## 🌟 Casos de Uso Populares
+## Casos de Uso Populares
 
 ### Cargando una Lista
 ```jsx
@@ -233,7 +234,7 @@ npm run lint
 <SkeletonTable rows={8} columns={5} variant="with-actions" />
 ```
 
-## 🎓 Mejores Prácticas
+## Mejores Prácticas
 
 1. **Coincide con tu Layout**: Haz que los skeletons coincidan con tu contenido real
 2. **Tiempo de Carga**: Mantén los estados de carga entre 0.5-2 segundos
@@ -241,14 +242,14 @@ npm run lint
 4. **Responsive**: Prueba los skeletons en diferentes tamaños de pantalla
 5. **Accesibilidad**: Considera usuarios que prefieren movimiento reducido
 
-## 🛠️ Stack Técnico
+## Stack Técnico
 
 - **React** 19.1.1 - Biblioteca de UI
 - **Styled Components** 6.x - CSS-in-JS
 - **Vite** 7.x - Herramienta de construcción
 - **ESLint** - Calidad de código
 
-## 📊 Estadísticas del Proyecto
+## Estadísticas del Proyecto
 
 - **Componentes**: 13 skeletons + 4 ejemplos = 17 total
 - **Variantes**: 15+ configuraciones únicas
@@ -257,7 +258,7 @@ npm run lint
 - **Ejemplos de Código**: 50+ patrones
 - **Casos de Uso**: 20+ escenarios cubiertos
 
-## 🤝 Contribuir
+## Contribuir
 
 Las contribuciones son bienvenidas. Por favor:
 
@@ -267,11 +268,11 @@ Las contribuciones son bienvenidas. Por favor:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 Construido con:
 - [React](https://react.dev/)
@@ -282,4 +283,4 @@ Construido con:
 
 **Hecho por Mikens**
 
-Para mejores experiencias de carga ✨
+Para mejores experiencias de carga
