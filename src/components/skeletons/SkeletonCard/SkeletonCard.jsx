@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import SkeletonBase from '../SkeletonBase';
-import SkeletonImage from '../SkeletonImage';
-import SkeletonText from '../SkeletonText';
-import SkeletonAvatar from '../SkeletonAvatar';
+import SkeletonBase from '@/components/skeletons/SkeletonBase';
+import SkeletonImage from '@/components/skeletons/SkeletonImage';
+import SkeletonText from '@/components/skeletons/SkeletonText';
+import SkeletonAvatar from '@/components/skeletons/SkeletonAvatar';
 
 const CardWrapper = styled.div`
   border: 2px solid ${props => props.theme?.cardBorder || '#e0e0e0'};

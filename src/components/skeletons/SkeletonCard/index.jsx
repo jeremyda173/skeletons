@@ -1,1 +1,1 @@
-export { default } from './SkeletonCard'; 
+export { default } from '@/components/skeletons/SkeletonCard/SkeletonCard';
