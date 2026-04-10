@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import SkeletonBase from '../SkeletonBase';
-import SkeletonAvatar from '../SkeletonAvatar';
+import SkeletonBase from '@/components/skeletons/SkeletonBase';
+import SkeletonAvatar from '@/components/skeletons/SkeletonAvatar';
 
 const TableWrapper = styled.div`
   width: 100%;
