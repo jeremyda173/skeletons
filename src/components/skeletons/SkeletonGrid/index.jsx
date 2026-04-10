@@ -1,1 +1,1 @@
-export { default } from './SkeletonGrid'; 
+export { default } from '@/components/skeletons/SkeletonGrid/SkeletonGrid';

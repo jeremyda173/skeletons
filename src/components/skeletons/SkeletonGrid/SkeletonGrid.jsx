@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SkeletonCard from '../SkeletonCard';
+import SkeletonCard from '@/components/skeletons/SkeletonCard';
 
 const GridWrapper = styled.div`
   display: grid;
