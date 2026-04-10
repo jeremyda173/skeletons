@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import SkeletonBase from '../SkeletonBase';
-import SkeletonText from '../SkeletonText';
-import SkeletonImage from '../SkeletonImage';
-import SkeletonAvatar from '../SkeletonAvatar';
+import SkeletonBase from '@/components/skeletons/SkeletonBase';
+import SkeletonText from '@/components/skeletons/SkeletonText';
+import SkeletonImage from '@/components/skeletons/SkeletonImage';
+import SkeletonAvatar from '@/components/skeletons/SkeletonAvatar';
 
 const BlogWrapper = styled.article`
   background: ${props => props.theme?.cardBg || '#ffffff'};
