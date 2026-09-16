@@ -1,14 +1,17 @@
 {
-  "name": "skeleton-ui",
-  "private": true,
+  "name": "mikens-skeletons",
+  "private": false,
   "version": "1.0.0",
+  "description": "A beautiful, premium, and clean React skeleton loader UI library.",
+  "keywords": ["react", "skeleton", "loader", "ui", "shimmer", "mikens", "mikens-skeletons"],
+  "author": "Mikens",
   "type": "module",
-  "main": "./dist/skeleton-ui.umd.cjs",
-  "module": "./dist/skeleton-ui.js",
+  "main": "./dist/mikens-skeletons.umd.cjs",
+  "module": "./dist/mikens-skeletons.js",
   "exports": {
     ".": {
-      "import": "./dist/skeleton-ui.js",
-      "require": "./dist/skeleton-ui.umd.cjs"
+      "import": "./dist/mikens-skeletons.js",
+      "require": "./dist/mikens-skeletons.umd.cjs"
     }
   },
   "files": [
