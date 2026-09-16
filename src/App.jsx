@@ -1,18 +1,22 @@
+// React & Libs
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
+
+// Styles & Themes
 import GlobalStyles from '@/styles/GlobalStyles';
 import { lightTheme, darkTheme } from '@/styles/theme';
 
+// Layout & UI Components
 import { Sidebar } from '@/components/ui/Sidebar';
 import { TopBar } from '@/components/ui/TopBar';
 import { LayoutWrapper, MainContent, ContentContainer, MobileMenuButton, Overlay } from '@/components/ui/DocsLayout';
+
+// Documentation Content
 import DocsContent from '@/components/docs/DocsContent';
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('mikens_skeletons_theme');
-    // Default to true (dark) since the user explicitly said "solo deja el darkmode" earlier, 
-    // but here we just restore what they had or default to dark
     return saved !== null ? saved === 'dark' : true; 
   });
   
