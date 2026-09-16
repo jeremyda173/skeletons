@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const ControlPanel = styled.div`
   background: ${props => props.theme.controlBg};
-  border: 2px solid ${props => props.theme.controlBorder};
+  border: 1px solid ${props => props.theme.controlBorder};
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  box-shadow: ${props => props.theme.glassShadow};
+  backdrop-filter: ${props => props.theme.glassBackdrop};
+  -webkit-backdrop-filter: ${props => props.theme.glassBackdrop};
   position: relative;
   overflow: hidden;
 
