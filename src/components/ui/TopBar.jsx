@@ -1,5 +1,8 @@
+// React & Libs
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
+// UI Components
 import { ControlGroup, Toggle } from '@/components/ui/Controls';
 
 const TopBarContainer = styled.header`
