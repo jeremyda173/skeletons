@@ -1,4 +1,7 @@
+// External Libraries
 import styled from 'styled-components';
+
+// Shared UI Components
 import { CodeBlock } from '@/components/ui/Section';
 
 const Title = styled.h1`
