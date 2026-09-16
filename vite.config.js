@@ -18,8 +18,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.jsx'),
-      name: 'SkeletonUI',
-      fileName: 'skeleton-ui',
+      name: 'MikensSkeletons',
+      fileName: 'mikens-skeletons',
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'styled-components'],
