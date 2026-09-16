@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { useState, useEffect } from 'react';
+import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '@/styles/GlobalStyles';
 import { lightTheme, darkTheme } from '@/styles/theme';
+
 import {
   SkeletonText,
   SkeletonAvatar,
@@ -16,470 +17,336 @@ import {
   SkeletonCommentList,
   SkeletonGrid,
 } from '@/components/skeletons';
-import { CardExample, ProfileExample, ListExample, TableExample } from '@/components/examples';
-import { Section, SectionTitle, SectionDescription, Grid, DemoBox, Label } from '@/components/ui/Section';
-import { ControlPanel, ControlGroup, Button, Select, Toggle } from '@/components/ui/Controls';
-
-const AppContainer = styled.div`
-  min-height: 100vh;
-  background: ${props => props.theme.background};
-  padding: 20px 16px;
-  
-  @media (min-width: 768px) {
-    padding: 40px 24px;
-  }
-  
-  @media (min-width: 1024px) {
-    padding: 60px 20px;
-  }
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-`;
-
-const Header = styled.header`
-  text-align: center;
-  margin-bottom: 40px;
-  
-  @media (min-width: 768px) {
-    margin-bottom: 50px;
-  }
-  
-  @media (min-width: 1024px) {
-    margin-bottom: 60px;
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 32px;
-  font-weight: 800;
-  margin: 0 0 12px 0;
-  background: linear-gradient(135deg, ${props => props.theme.accentPrimary} 0%, ${props => props.theme.accentSecondary} 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  
-  @media (min-width: 768px) {
-    font-size: 40px;
-    margin: 0 0 16px 0;
-  }
-  
-  @media (min-width: 1024px) {
-    font-size: 48px;
-  }
-`;
-
-const Subtitle = styled.p`
-  font-size: 16px;
-  color: ${props => props.theme.text};
-  opacity: 0.8;
-  margin: 0;
-  
-  @media (min-width: 768px) {
-    font-size: 18px;
-  }
-  
-  @media (min-width: 1024px) {
-    font-size: 20px;
-  }
-`;
-
-const Badge = styled.span`
-  display: inline-block;
-  padding: 6px 12px;
-  background: linear-gradient(135deg, ${props => props.theme.accentPrimary}, ${props => props.theme.accentSecondary});
-  color: white;
-  border-radius: 16px;
-  font-size: 11px;
-  font-weight: 600;
-  margin: 0 4px;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-  transition: all 0.3s ease;
-  
-  @media (min-width: 768px) {
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
-  }
-`;
-
-const Divider = styled.hr`
-  border: none;
-  border-top: 2px solid ${props => props.theme.border};
-  margin: 32px 0;
-  opacity: 0.3;
-  
-  @media (min-width: 768px) {
-    margin: 40px 0;
-  }
-  
-  @media (min-width: 1024px) {
-    margin: 48px 0;
-  }
-`;
-
-const Footer = styled.footer`
-  text-align: center;
-  margin-top: 40px;
-  padding: 24px 16px;
-  color: ${props => props.theme.text};
-  opacity: 0.7;
-  font-size: 13px;
-  border-top: 2px solid ${props => props.theme.border};
-  
-  @media (min-width: 768px) {
-    margin-top: 60px;
-    padding: 32px 20px;
-    font-size: 14px;
-  }
-  
-  @media (min-width: 1024px) {
-    margin-top: 80px;
-    padding: 40px 20px;
-  }
-`;
+import { Section, SectionTitle, SectionDescription, Grid, DemoBox } from '@/components/ui/Section';
+import { Sidebar } from '@/components/ui/Sidebar';
+import { TopBar } from '@/components/ui/TopBar';
+import { LayoutWrapper, MainContent, ContentContainer, MobileMenuButton, Overlay } from '@/components/ui/DocsLayout';
+import GettingStarted from '@/components/docs/GettingStarted';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
-  const [animation, setAnimation] = useState('shimmer');
-  const [showExamples, setShowExamples] = useState(true);
+  const [language, setLanguage] = useState('es');
+  const animation = 'wave';
+  const [activeTab, setActiveTab] = useState('getting-started');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState(0);
+
+  useEffect(() => {
+    setSelectedVariant(0);
+  }, [activeTab]);
 
   const theme = isDark ? darkTheme : lightTheme;
+
+  // Data-driven component documentation structure
+  const docsData = {
+    text: {
+      title: language === 'es' ? 'Skeletons de Texto' : 'Text Skeletons',
+      description: language === 'es' 
+        ? 'Placeholders de texto versátiles con líneas y anchos personalizables.' 
+        : 'Versatile text loading placeholders with customizable lines and widths.',
+      variants: [
+        {
+          label: 'Single Line',
+          code: `import { SkeletonText } from 'mikens-skeletons';\n\n<SkeletonText lines={1} />`,
+          render: <SkeletonText lines={1} animation={animation} />
+        },
+        {
+          label: 'Multiple Lines',
+          code: `import { SkeletonText } from 'mikens-skeletons';\n\n<SkeletonText lines={3} />`,
+          render: <SkeletonText lines={3} animation={animation} />
+        },
+        {
+          label: 'Custom Width',
+          code: `import { SkeletonText } from 'mikens-skeletons';\n\n<SkeletonText lines={3} lastLineWidth="50%" />`,
+          render: <SkeletonText lines={3} lastLineWidth="50%" animation={animation} />
+        }
+      ]
+    },
+    avatar: {
+      title: language === 'es' ? 'Skeletons de Avatar' : 'Avatar Skeletons',
+      description: language === 'es' 
+        ? 'Placeholders para fotos de perfil con o sin etiquetas de texto.' 
+        : 'Profile picture placeholders with or without text labels.',
+      variants: [
+        {
+          label: 'Circle Avatar',
+          code: `import { SkeletonAvatar } from 'mikens-skeletons';\n\n<SkeletonAvatar size="60px" />`,
+          render: <SkeletonAvatar size="60px" animation={animation} />
+        },
+        {
+          label: 'Square Avatar',
+          code: `import { SkeletonAvatar } from 'mikens-skeletons';\n\n<SkeletonAvatar size="60px" shape="square" />`,
+          render: <SkeletonAvatar size="60px" shape="square" animation={animation} />
+        },
+        {
+          label: 'Avatar with Text',
+          code: `import { SkeletonAvatar } from 'mikens-skeletons';\n\n<SkeletonAvatar size="60px" withText textLines={2} />`,
+          render: <SkeletonAvatar size="60px" withText textLines={2} animation={animation} />
+        }
+      ]
+    },
+    image: {
+      title: language === 'es' ? 'Skeletons de Imagen' : 'Image Skeletons',
+      description: language === 'es' 
+        ? 'Placeholders para imágenes con dimensiones responsivas.' 
+        : 'Placeholders for images with responsive dimensions.',
+      variants: [
+        {
+          label: 'Standard Image',
+          code: `import { SkeletonImage } from 'mikens-skeletons';\n\n<SkeletonImage height="180px" />`,
+          render: <SkeletonImage height="180px" animation={animation} />
+        },
+        {
+          label: 'Wide Image',
+          code: `import { SkeletonImage } from 'mikens-skeletons';\n\n<SkeletonImage height="120px" />`,
+          render: <SkeletonImage height="120px" animation={animation} />
+        },
+        {
+          label: 'Square Image',
+          code: `import { SkeletonImage } from 'mikens-skeletons';\n\n<SkeletonImage aspectRatio="1" />`,
+          render: <SkeletonImage aspectRatio="1" animation={animation} />
+        }
+      ]
+    },
+    button: {
+      title: language === 'es' ? 'Skeletons de Botón' : 'Button Skeleton',
+      description: language === 'es' 
+        ? 'Estados de carga para botones y elementos de acción.' 
+        : 'Loading states for buttons and action elements.',
+      variants: [
+        {
+          label: 'Primary Button',
+          code: `import { SkeletonButton } from 'mikens-skeletons';\n\n<SkeletonButton width="140px" height="44px" />`,
+          render: <SkeletonButton width="140px" height="44px" animation={animation} />
+        },
+        {
+          label: 'Small Button',
+          code: `import { SkeletonButton } from 'mikens-skeletons';\n\n<SkeletonButton width="100px" height="32px" />`,
+          render: <SkeletonButton width="100px" height="32px" animation={animation} />
+        },
+        {
+          label: 'Full Width Button',
+          code: `import { SkeletonButton } from 'mikens-skeletons';\n\n<SkeletonButton height="48px" fullWidth />`,
+          render: <SkeletonButton height="48px" fullWidth animation={animation} />
+        }
+      ]
+    },
+    card: {
+      title: language === 'es' ? 'Skeletons de Cards' : 'Card Skeletons',
+      description: language === 'es' 
+        ? 'Diseños completos de tarjetas para diferentes casos de uso.' 
+        : 'Complete card layouts for different use cases.',
+      variants: [
+        {
+          label: 'Default Card',
+          code: `import { SkeletonCard } from 'mikens-skeletons';\n\n<SkeletonCard variant="default" />`,
+          render: <SkeletonCard variant="default" animation={animation} />
+        },
+        {
+          label: 'Card with Image',
+          code: `import { SkeletonCard } from 'mikens-skeletons';\n\n<SkeletonCard variant="with-image" />`,
+          render: <SkeletonCard variant="with-image" animation={animation} />
+        },
+        {
+          label: 'Card with Avatar',
+          code: `import { SkeletonCard } from 'mikens-skeletons';\n\n<SkeletonCard variant="with-avatar" />`,
+          render: <SkeletonCard variant="with-avatar" animation={animation} />
+        }
+      ]
+    },
+    list: {
+      title: language === 'es' ? 'Skeletons de Listas' : 'List Skeletons',
+      description: language === 'es' 
+        ? 'Placeholders de listas perfectos para feeds y directorios.' 
+        : 'List placeholders perfect for feeds and directories.',
+      variants: [
+        {
+          label: 'Default List',
+          code: `import { SkeletonList } from 'mikens-skeletons';\n\n<SkeletonList items={5} variant="default" />`,
+          render: <SkeletonList items={5} variant="default" animation={animation} />
+        },
+        {
+          label: 'List with Avatars',
+          code: `import { SkeletonList } from 'mikens-skeletons';\n\n<SkeletonList items={5} variant="with-avatar" />`,
+          render: <SkeletonList items={5} variant="with-avatar" animation={animation} />
+        }
+      ]
+    },
+    table: {
+      title: language === 'es' ? 'Skeletons de Tabla' : 'Table Skeleton',
+      description: language === 'es' 
+        ? 'Tablas de datos con múltiples variantes y configuraciones.' 
+        : 'Data tables with multiple variants and configurations.',
+      variants: [
+        {
+          label: 'Default Table',
+          code: `import { SkeletonTable } from 'mikens-skeletons';\n\n<SkeletonTable rows={5} columns={4} />`,
+          render: <SkeletonTable rows={5} columns={4} animation={animation} />
+        },
+        {
+          label: 'Table with Actions',
+          code: `import { SkeletonTable } from 'mikens-skeletons';\n\n<SkeletonTable rows={4} columns={3} variant="with-actions" />`,
+          render: <SkeletonTable rows={4} columns={3} variant="with-actions" animation={animation} />
+        },
+        {
+          label: 'Table with Avatars',
+          code: `import { SkeletonTable } from 'mikens-skeletons';\n\n<SkeletonTable rows={4} columns={3} variant="with-avatars" />`,
+          render: <SkeletonTable rows={4} columns={3} variant="with-avatars" animation={animation} />
+        }
+      ]
+    },
+    profile: {
+      title: language === 'es' ? 'Skeletons de Perfil' : 'Profile Skeletons',
+      description: language === 'es' 
+        ? 'Perfiles de usuario con diferentes niveles de detalle.' 
+        : 'User profiles with varying levels of detail.',
+      variants: [
+        {
+          label: 'Simple Profile',
+          code: `import { SkeletonProfile } from 'mikens-skeletons';\n\n<SkeletonProfile variant="default" />`,
+          render: <SkeletonProfile variant="default" animation={animation} />
+        },
+        {
+          label: 'Detailed Profile',
+          code: `import { SkeletonProfile } from 'mikens-skeletons';\n\n<SkeletonProfile variant="detailed" />`,
+          render: <SkeletonProfile variant="detailed" animation={animation} />
+        }
+      ]
+    },
+    form: {
+      title: language === 'es' ? 'Skeletons de Formulario' : 'Form Skeleton',
+      description: language === 'es' 
+        ? 'Formularios pre-construidos con campos de entrada y botones de acción.' 
+        : 'Pre-built forms with input fields and action buttons.',
+      variants: [
+        {
+          label: 'Contact Form',
+          code: `import { SkeletonForm } from 'mikens-skeletons';\n\n<SkeletonForm fields={3} />`,
+          render: <SkeletonForm fields={3} animation={animation} />
+        },
+        {
+          label: 'Registration Form',
+          code: `import { SkeletonForm } from 'mikens-skeletons';\n\n<SkeletonForm fields={5} />`,
+          render: <SkeletonForm fields={5} animation={animation} />
+        }
+      ]
+    },
+    blog: {
+      title: language === 'es' ? 'Skeleton de Blog Post' : 'Blog Post Skeleton',
+      description: language === 'es' 
+        ? 'Layouts completos pre-construidos para entradas de blog y artículos.' 
+        : 'Complete pre-built layouts for blog posts and articles.',
+      variants: [
+        {
+          label: 'Simple Blog Post',
+          code: `import { SkeletonBlog } from 'mikens-skeletons';\n\n<SkeletonBlog variant="default" />`,
+          render: <SkeletonBlog variant="default" animation={animation} />
+        },
+        {
+          label: 'Blog with Image',
+          code: `import { SkeletonBlog } from 'mikens-skeletons';\n\n<SkeletonBlog variant="with-image" />`,
+          render: <SkeletonBlog variant="with-image" animation={animation} />
+        }
+      ]
+    },
+    comment: {
+      title: language === 'es' ? 'Skeletons de Comentarios' : 'Comment Skeleton',
+      description: language === 'es' 
+        ? 'Hilos de comentarios con soporte para respuestas jerárquicas.' 
+        : 'Comment threads with support for nested replies.',
+      variants: [
+        {
+          label: 'Flat Comments',
+          code: `import { SkeletonCommentList } from 'mikens-skeletons';\n\n<SkeletonCommentList items={4} />`,
+          render: <SkeletonCommentList items={4} animation={animation} />
+        },
+        {
+          label: 'Comments with Replies',
+          code: `import { SkeletonCommentList } from 'mikens-skeletons';\n\n<SkeletonCommentList items={4} withReplies />`,
+          render: <SkeletonCommentList items={4} withReplies animation={animation} />
+        }
+      ]
+    },
+    grid: {
+      title: language === 'es' ? 'Skeletons de Cuadrícula (Grid)' : 'Grid Skeleton',
+      description: language === 'es' 
+        ? 'Galerías de imágenes o productos en formato de cuadrícula responsiva.' 
+        : 'Responsive image galleries or product grids.',
+      variants: [
+        {
+          label: 'Product Grid',
+          code: `import { SkeletonGrid } from 'mikens-skeletons';\n\n<SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" />`,
+          render: <SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" animation={animation} />
+        }
+      ]
+    }
+  };
+
+  const renderContent = () => {
+    if (activeTab === 'getting-started') {
+      return <GettingStarted language={language} />;
+    }
+
+    const currentDoc = docsData[activeTab];
+    if (!currentDoc) return <GettingStarted language={language} />;
+
+    return (
+      <Section>
+        <SectionTitle>{currentDoc.title}</SectionTitle>
+        <SectionDescription>{currentDoc.description}</SectionDescription>
+        
+        {/* Dynamic Code Block with Copy Button */}
+        {currentDoc.variants[selectedVariant] && (
+          <CodeBlock style={{ marginBottom: '32px' }}>
+            {currentDoc.variants[selectedVariant].code}
+          </CodeBlock>
+        )}
+
+        <Grid gap="24px" minWidth="300px">
+          {currentDoc.variants.map((variant, index) => (
+            <DemoBox 
+              key={index}
+              isActive={selectedVariant === index}
+              onClick={() => setSelectedVariant(index)}
+            >
+              <Label>{variant.label}</Label>
+              {variant.render}
+            </DemoBox>
+          ))}
+        </Grid>
+      </Section>
+    );
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <AppContainer>
-        <Container>
-          <Header>
-            <Title>Skeleton Loader UI</Title>
-            <Subtitle>
-              Beautiful skeleton components with smooth animations
-            </Subtitle>
-            <div style={{ marginTop: '20px' }}>
-              <Badge>React</Badge>
-              <Badge>Styled Components</Badge>
-              <Badge>CSS Animations</Badge>
-            </div>
-          </Header>
+      <LayoutWrapper>
+        <Overlay isOpen={isSidebarOpen} onClick={() => setIsSidebarOpen(false)} />
+        <Sidebar 
+          activeTab={activeTab} 
+          setActiveTab={setActiveTab} 
+          isOpen={isSidebarOpen} 
+          setIsOpen={setIsSidebarOpen}
+          language={language}
+        />
+        
+        <MainContent>
+          <TopBar 
+            isDark={isDark} 
+            setIsDark={setIsDark}
+            language={language}
+            setLanguage={setLanguage}
+          />
+          <ContentContainer>
+            {renderContent()}
+          </ContentContainer>
+        </MainContent>
 
-          <ControlPanel>
-            <ControlGroup>
-              <Toggle>
-                <input
-                  type="checkbox"
-                  checked={isDark}
-                  onChange={() => setIsDark(!isDark)}
-                />
-                Dark Mode
-              </Toggle>
-
-              <Select value={animation} onChange={(e) => setAnimation(e.target.value)}>
-                <option value="shimmer">Shimmer Animation</option>
-                <option value="pulse">Pulse Animation</option>
-              </Select>
-
-              <Toggle>
-                <input
-                  type="checkbox"
-                  checked={showExamples}
-                  onChange={() => setShowExamples(!showExamples)}
-                />
-                Show Real Content After Loading
-              </Toggle>
-            </ControlGroup>
-          </ControlPanel>
-
-          {/* Text Skeletons */}
-          <Section>
-            <SectionTitle>Text Skeletons</SectionTitle>
-            <SectionDescription>
-              Versatile text loading placeholders with customizable lines and widths.
-            </SectionDescription>
-            <Grid gap="24px">
-              <DemoBox>
-                <Label>Single Line</Label>
-                <SkeletonText lines={1} animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Multiple Lines</Label>
-                <SkeletonText lines={3} animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Custom Width</Label>
-                <SkeletonText lines={3} lastLineWidth="50%" animation={animation} />
-              </DemoBox>
-            </Grid>
-          </Section>
-
-          {/* Avatar Skeletons */}
-          <Section>
-            <SectionTitle>Avatar Skeletons</SectionTitle>
-            <SectionDescription>
-              Profile picture placeholders with optional text labels.
-            </SectionDescription>
-            <Grid gap="24px">
-              <DemoBox>
-                <Label>Circle Avatar</Label>
-                <SkeletonAvatar size="60px" animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Square Avatar</Label>
-                <SkeletonAvatar size="60px" shape="square" animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Avatar with Text</Label>
-                <SkeletonAvatar size="60px" withText textLines={2} animation={animation} />
-              </DemoBox>
-            </Grid>
-          </Section>
-
-          {/* Image Skeletons */}
-          <Section>
-            <SectionTitle>Image Skeletons</SectionTitle>
-            <SectionDescription>
-              Image loading placeholders with responsive dimensions.
-            </SectionDescription>
-            <Grid minWidth="250px" gap="24px">
-              <DemoBox>
-                <Label>Standard Image</Label>
-                <SkeletonImage height="180px" animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Wide Image</Label>
-                <SkeletonImage height="120px" animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Square Image</Label>
-                <SkeletonImage aspectRatio="1" animation={animation} />
-              </DemoBox>
-            </Grid>
-          </Section>
-
-          <Divider />
-
-          {/* Card Skeletons */}
-          <Section>
-            <SectionTitle>Card Skeletons</SectionTitle>
-            <SectionDescription>
-              Complete card layouts with various configurations for different use cases.
-            </SectionDescription>
-            <Grid minWidth="300px" gap="24px">
-              <div>
-                <Label>Default Card</Label>
-                {showExamples ? (
-                  <CardExample variant="default" />
-                ) : (
-                  <SkeletonCard variant="default" animation={animation} />
-                )}
-              </div>
-              <div>
-                <Label>Card with Image</Label>
-                {showExamples ? (
-                  <CardExample variant="with-image" />
-                ) : (
-                  <SkeletonCard variant="with-image" animation={animation} />
-                )}
-              </div>
-              <div>
-                <Label>Card with Avatar</Label>
-                {showExamples ? (
-                  <CardExample variant="with-avatar" />
-                ) : (
-                  <SkeletonCard variant="with-avatar" animation={animation} />
-                )}
-              </div>
-            </Grid>
-          </Section>
-
-          {/* Profile Skeletons */}
-          <Section>
-            <SectionTitle>Profile Skeletons</SectionTitle>
-            <SectionDescription>
-              User profile loading states with different detail levels.
-            </SectionDescription>
-            <Grid minWidth="350px" gap="24px">
-              <div>
-                <Label>Simple Profile</Label>
-                {showExamples ? (
-                  <ProfileExample variant="default" />
-                ) : (
-                  <SkeletonProfile variant="default" animation={animation} />
-                )}
-              </div>
-              <div>
-                <Label>Detailed Profile</Label>
-                {showExamples ? (
-                  <ProfileExample variant="detailed" />
-                ) : (
-                  <SkeletonProfile variant="detailed" animation={animation} />
-                )}
-              </div>
-            </Grid>
-          </Section>
-
-          {/* List Skeletons */}
-          <Section>
-            <SectionTitle>List Skeletons</SectionTitle>
-            <SectionDescription>
-              List item placeholders perfect for feeds and directories.
-            </SectionDescription>
-            <Grid minWidth="350px" gap="24px">
-              <div>
-                <Label>Default List</Label>
-                {showExamples ? (
-                  <ListExample variant="default" />
-                ) : (
-                  <SkeletonList items={5} variant="default" animation={animation} />
-                )}
-              </div>
-              <div>
-                <Label>List with Avatars</Label>
-                {showExamples ? (
-                  <ListExample variant="with-avatar" />
-                ) : (
-                  <SkeletonList items={5} variant="with-avatar" animation={animation} />
-                )}
-              </div>
-            </Grid>
-          </Section>
-
-          {/* Table Skeleton */}
-          <Section>
-            <SectionTitle>Table Skeleton</SectionTitle>
-            <SectionDescription>
-              Data table loading placeholders with multiple variants and configurations.
-            </SectionDescription>
-            <Grid minWidth="350px" gap="24px">
-              <div>
-                <Label>Default Table</Label>
-                {showExamples ? (
-                  <TableExample />
-                ) : (
-                  <SkeletonTable rows={5} columns={4} animation={animation} />
-                )}
-              </div>
-              <div>
-                <Label>Table with Actions</Label>
-                <SkeletonTable rows={4} columns={3} variant="with-actions" animation={animation} />
-              </div>
-              <div>
-                <Label>Table with Avatars</Label>
-                <SkeletonTable rows={4} columns={3} variant="with-avatars" animation={animation} />
-              </div>
-              <div>
-                <Label>Compact Table</Label>
-                <SkeletonTable rows={6} columns={4} variant="compact" animation={animation} />
-              </div>
-              <div>
-                <Label>Table with Pagination</Label>
-                <SkeletonTable rows={5} columns={4} variant="with-pagination" animation={animation} />
-              </div>
-            </Grid>
-          </Section>
-
-          {/* Form Skeleton */}
-          <Section>
-            <SectionTitle>Form Skeleton</SectionTitle>
-            <SectionDescription>
-              Form loading states with input fields and buttons.
-            </SectionDescription>
-            <Grid minWidth="350px" gap="24px">
-              <div>
-                <Label>Contact Form</Label>
-                <SkeletonForm fields={3} animation={animation} />
-              </div>
-              <div>
-                <Label>Registration Form</Label>
-                <SkeletonForm fields={5} animation={animation} />
-              </div>
-            </Grid>
-          </Section>
-
-          {/* Button Skeleton */}
-          <Section>
-            <SectionTitle>Button Skeleton</SectionTitle>
-            <SectionDescription>
-              Loading states for buttons and action elements.
-            </SectionDescription>
-            <Grid minWidth="200px" gap="24px">
-              <DemoBox>
-                <Label>Primary Button</Label>
-                <SkeletonButton width="140px" height="44px" animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Small Button</Label>
-                <SkeletonButton width="100px" height="32px" animation={animation} />
-              </DemoBox>
-              <DemoBox>
-                <Label>Full Width Button</Label>
-                <SkeletonButton height="48px" fullWidth animation={animation} />
-              </DemoBox>
-            </Grid>
-          </Section>
-
-          <Divider />
-
-          {/* Blog Skeleton */}
-          <Section>
-            <SectionTitle>Blog Post Skeleton</SectionTitle>
-            <SectionDescription>
-              Complete blog post layouts with different configurations.
-            </SectionDescription>
-            <Grid minWidth="350px" gap="24px">
-              <div>
-                <Label>Simple Blog Post</Label>
-                <SkeletonBlog variant="default" animation={animation} />
-              </div>
-              <div>
-                <Label>Blog with Image</Label>
-                <SkeletonBlog variant="with-image" animation={animation} />
-              </div>
-              <div>
-                <Label>Full Blog Post</Label>
-                <SkeletonBlog variant="full" animation={animation} />
-              </div>
-            </Grid>
-          </Section>
-
-          {/* Comment Skeleton */}
-          <Section>
-            <SectionTitle>Comment Skeleton</SectionTitle>
-            <SectionDescription>
-              Comment section loading states with nested replies support.
-            </SectionDescription>
-      <div>
-              <Label>Comment Thread</Label>
-              <SkeletonCommentList items={4} withReplies animation={animation} />
-      </div>
-          </Section>
-
-          {/* Grid Skeleton */}
-          <Section>
-            <SectionTitle>Grid Skeleton</SectionTitle>
-            <SectionDescription>
-              Pre-built grid layouts for product galleries, portfolios, and more.
-            </SectionDescription>
-            <div>
-              <Label>Product Grid (3 columns)</Label>
-              <SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" animation={animation} />
-      </div>
-          </Section>
-
-          <Footer>
-            <p>Hecho por Mikens</p>
-          </Footer>
-        </Container>
-      </AppContainer>
+        <MobileMenuButton onClick={() => setIsSidebarOpen(true)}>
+          ☰
+        </MobileMenuButton>
+      </LayoutWrapper>
     </ThemeProvider>
   );
 }
