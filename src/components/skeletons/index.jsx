@@ -11,3 +11,7 @@ export { default as SkeletonButton } from './SkeletonButton';
 export { default as SkeletonGrid } from './SkeletonGrid';
 export { default as SkeletonBlog } from './SkeletonBlog';
 export { SkeletonComment, SkeletonCommentList } from './SkeletonComment';
+export { default as SkeletonWrapper } from './SkeletonWrapper';
+export { default as SkeletonChart } from './SkeletonChart';
+export { default as SkeletonMedia } from './SkeletonMedia';
+export { default as SkeletonCode } from './SkeletonCode';
