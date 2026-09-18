@@ -32,10 +32,17 @@ const wave = keyframes`
   }
 `;
 
-export const SkeletonBase = styled.div`
+export const SkeletonBase = styled.div.attrs(props => ({
+  role: props.role || 'status',
+  'aria-busy': props['aria-busy'] !== undefined ? props['aria-busy'] : 'true',
+  'aria-label': props.ariaLabel || 'Cargando...',
+}))`
   position: relative;
   overflow: hidden;
   background: ${props => props.theme?.skeletonBg || '#e2e8f0'};
+  @media (prefers-color-scheme: dark) {
+    background: ${props => props.theme?.skeletonBg || '#334155'};
+  }
   border-radius: ${props => props.radius || '6px'};
   display: ${props => props.inline ? 'inline-block' : 'block'};
   width: ${props => props.width || '100%'};
@@ -52,6 +59,7 @@ export const SkeletonBase = styled.div`
     );
     background-size: 200% 100%;
     animation: ${shimmer} ${props.duration || '2s'} infinite linear;
+    animation-delay: ${props.animationDelay || '0s'};
   `}
 
   ${props => props.animation === 'wave' && css`
@@ -69,11 +77,13 @@ export const SkeletonBase = styled.div`
         transparent
       );
       animation: ${wave} ${props.duration || '2s'} infinite ease-in-out;
+      animation-delay: ${props.animationDelay || '0s'};
     }
   `}
 
   ${props => props.animation === 'pulse' && css`
     animation: ${pulse} ${props.duration || '2s'} infinite ease-in-out;
+    animation-delay: ${props.animationDelay || '0s'};
   `}
 `;
 
