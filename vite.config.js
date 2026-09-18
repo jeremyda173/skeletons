@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dts from 'vite-plugin-dts'
 
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -9,7 +10,13 @@ const __dirname = dirname(__filename)
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+      rollupTypes: true,
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
