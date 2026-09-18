@@ -19,6 +19,15 @@ const SidebarContainer = styled.aside`
   @media (max-width: 768px) {
     transform: translateX(${props => props.isOpen ? '0' : '-100%'});
   }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 `;
 
 const SidebarTitle = styled.h2`
