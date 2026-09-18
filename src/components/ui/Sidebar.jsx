@@ -120,6 +120,18 @@ export function Sidebar({ activeTab, setActiveTab, isOpen, setIsOpen, language }
         { id: "comment", label: "Comentarios" },
         { id: "grid", label: "Grids" }
       ]
+    },
+    {
+      category: "Plantillas (Nuevo)",
+      items: [
+        { id: "dashboard", label: "Dashboard" },
+        { id: "timeline", label: "Timeline" },
+        { id: "kanban", label: "Kanban" },
+        { id: "ecommerce", label: "Ecommerce" },
+        { id: "chat", label: "Chat" },
+        { id: "pricing", label: "Pricing" },
+        { id: "stats", label: "Stats" }
+      ]
     }
   ];
 
@@ -150,6 +162,18 @@ export function Sidebar({ activeTab, setActiveTab, isOpen, setIsOpen, language }
         { id: "blog", label: "Blog Posts" },
         { id: "comment", label: "Comments" },
         { id: "grid", label: "Grids" }
+      ]
+    },
+    {
+      category: "Templates (New)",
+      items: [
+        { id: "dashboard", label: "Dashboard" },
+        { id: "timeline", label: "Timeline" },
+        { id: "kanban", label: "Kanban" },
+        { id: "ecommerce", label: "Ecommerce" },
+        { id: "chat", label: "Chat" },
+        { id: "pricing", label: "Pricing" },
+        { id: "stats", label: "Stats" }
       ]
     }
   ];
