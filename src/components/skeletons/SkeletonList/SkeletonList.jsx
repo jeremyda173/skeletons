@@ -42,17 +42,18 @@ const TextGroup = styled.div`
 const SkeletonList = ({ 
   items = 5, 
   variant = 'default', // default, with-avatar, simple
-  animation = 'shimmer'
+  animation = 'shimmer',
+  staggerDelay = 0.1 // delay in seconds between items
 }) => {
   if (variant === 'with-avatar') {
     return (
       <ListWrapper>
         {Array.from({ length: items }).map((_, index) => (
           <ListItem key={index}>
-            <SkeletonAvatar size="40px" animation={animation} />
+            <SkeletonAvatar size="40px" animation={animation} animationDelay={`${index * staggerDelay}s`} />
             <TextGroup>
-              <SkeletonBase width="70%" height="16px" animation={animation} />
-              <SkeletonBase width="50%" height="14px" animation={animation} />
+              <SkeletonBase width="70%" height="16px" animation={animation} animationDelay={`${index * staggerDelay}s`} />
+              <SkeletonBase width="50%" height="14px" animation={animation} animationDelay={`${index * staggerDelay}s`} />
             </TextGroup>
           </ListItem>
         ))}
@@ -65,7 +66,7 @@ const SkeletonList = ({
       <ListWrapper>
         {Array.from({ length: items }).map((_, index) => (
           <ListItem key={index}>
-            <SkeletonBase width="100%" height="16px" animation={animation} />
+            <SkeletonBase width="100%" height="16px" animation={animation} animationDelay={`${index * staggerDelay}s`} />
           </ListItem>
         ))}
       </ListWrapper>
@@ -77,8 +78,8 @@ const SkeletonList = ({
       {Array.from({ length: items }).map((_, index) => (
         <ListItem key={index}>
           <TextGroup>
-            <SkeletonBase width="80%" height="16px" animation={animation} />
-            <SkeletonBase width="60%" height="14px" animation={animation} />
+            <SkeletonBase width="80%" height="16px" animation={animation} animationDelay={`${index * staggerDelay}s`} />
+            <SkeletonBase width="60%" height="14px" animation={animation} animationDelay={`${index * staggerDelay}s`} />
           </TextGroup>
         </ListItem>
       ))}
