@@ -12,6 +12,13 @@ import {
   SkeletonBlog,
   SkeletonCommentList,
   SkeletonGrid,
+  SkeletonDashboard,
+  SkeletonTimeline,
+  SkeletonKanban,
+  SkeletonEcommerce,
+  SkeletonChat,
+  SkeletonPricing,
+  SkeletonStats,
 } from '@/components/skeletons';
 
 export const getDocsData = (language, animation) => {
@@ -254,6 +261,97 @@ export const getDocsData = (language, animation) => {
           label: 'Product Grid',
           code: `import { SkeletonGrid } from 'mikens-skeletons';\n\n<SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" />`,
           render: <SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" animation={animation} />
+        }
+      ]
+    },
+    dashboard: {
+      title: language === 'es' ? 'Skeleton Dashboard' : 'Dashboard Skeleton',
+      description: language === 'es' 
+        ? 'Un diseño completo para un panel de administración con gráficos y estadísticas.' 
+        : 'A complete layout for an admin panel with charts and statistics.',
+      variants: [
+        {
+          label: 'Admin Dashboard',
+          code: `import { SkeletonDashboard } from 'mikens-skeletons';\n\n<SkeletonDashboard />`,
+          render: <SkeletonDashboard animation={animation} />
+        }
+      ]
+    },
+    timeline: {
+      title: language === 'es' ? 'Skeleton Timeline' : 'Timeline Skeleton',
+      description: language === 'es' 
+        ? 'Un skeleton para un feed de actividad o línea de tiempo de eventos.' 
+        : 'A skeleton for an activity feed or events timeline.',
+      variants: [
+        {
+          label: 'Activity Timeline',
+          code: `import { SkeletonTimeline } from 'mikens-skeletons';\n\n<SkeletonTimeline items={4} />`,
+          render: <SkeletonTimeline items={4} animation={animation} />
+        }
+      ]
+    },
+    kanban: {
+      title: language === 'es' ? 'Skeleton Kanban' : 'Kanban Skeleton',
+      description: language === 'es' 
+        ? 'Un diseño de tablero tipo Kanban con columnas y tarjetas.' 
+        : 'A Kanban board layout with columns and cards.',
+      variants: [
+        {
+          label: 'Kanban Board',
+          code: `import { SkeletonKanban } from 'mikens-skeletons';\n\n<SkeletonKanban columns={3} cardsPerColumn={3} />`,
+          render: <SkeletonKanban columns={3} cardsPerColumn={3} animation={animation} />
+        }
+      ]
+    },
+    ecommerce: {
+      title: language === 'es' ? 'Skeleton Ecommerce' : 'Ecommerce Skeleton',
+      description: language === 'es' 
+        ? 'Página de detalle de producto con galería de imágenes y detalles de compra.' 
+        : 'Product detail page with image gallery and purchase details.',
+      variants: [
+        {
+          label: 'Product Details',
+          code: `import { SkeletonEcommerce } from 'mikens-skeletons';\n\n<SkeletonEcommerce />`,
+          render: <SkeletonEcommerce animation={animation} />
+        }
+      ]
+    },
+    chat: {
+      title: language === 'es' ? 'Skeleton Chat' : 'Chat Skeleton',
+      description: language === 'es' 
+        ? 'Interfaz de mensajería con lista de contactos y burbujas de chat.' 
+        : 'Messaging interface with contact list and chat bubbles.',
+      variants: [
+        {
+          label: 'Chat Interface',
+          code: `import { SkeletonChat } from 'mikens-skeletons';\n\n<SkeletonChat />`,
+          render: <SkeletonChat animation={animation} />
+        }
+      ]
+    },
+    pricing: {
+      title: language === 'es' ? 'Skeleton Pricing' : 'Pricing Skeleton',
+      description: language === 'es' 
+        ? 'Tarjetas de planes de precios, destacando el plan central.' 
+        : 'Pricing plan cards, highlighting the central plan.',
+      variants: [
+        {
+          label: 'Pricing Plans',
+          code: `import { SkeletonPricing } from 'mikens-skeletons';\n\n<SkeletonPricing plans={3} />`,
+          render: <SkeletonPricing plans={3} animation={animation} />
+        }
+      ]
+    },
+    stats: {
+      title: language === 'es' ? 'Skeleton Stats' : 'Stats Skeleton',
+      description: language === 'es' 
+        ? 'Widgets/tarjetas de métricas o KPIs.' 
+        : 'Metrics or KPIs widgets/cards.',
+      variants: [
+        {
+          label: 'Stats Cards',
+          code: `import { SkeletonStats } from 'mikens-skeletons';\n\n<SkeletonStats count={4} />`,
+          render: <SkeletonStats count={4} animation={animation} />
         }
       ]
     }
