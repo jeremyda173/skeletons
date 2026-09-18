@@ -10,8 +10,10 @@ Una biblioteca premium y completa de componentes skeleton para React. Animacione
 En lugar de mostrar pantallas en blanco o spinners aburridos, **Mikens Skeletons** replica la forma y el diseño de tu contenido final.
 
 - **Diseño Premium**: Efectos glassmorphism, gradientes suaves y animaciones de alta calidad.
+- **Accesibilidad (a11y)**: Atributos `aria-busy` y `role="status"` integrados por defecto.
+- **Animaciones Escalonadas (Staggered)**: Soporte para delays en animaciones de listas para un efecto cascada premium.
 - **3 Animaciones Integradas**: `shimmer` (onda suave), `pulse` (respiración) y la nueva `wave` (ola).
-- **Soporte Dark Mode**: Colores de alta fidelidad tanto para temas claros como oscuros.
+- **Soporte Dark Mode Automático**: Colores de alta fidelidad que se adaptan al sistema automáticamente.
 - **Optimizado & Limpio**: Código limpio, ligero y fácil de integrar.
 
 ## Instalación
@@ -27,15 +29,15 @@ yarn add mikens-skeletons
 Una vez que tengas la librería instalada, puedes importar los componentes de la siguiente manera:
 
 ```jsx
-import { SkeletonCard, SkeletonText, useLoading } from 'mikens-skeletons';
+import { SkeletonWrapper, SkeletonCard, useLoading } from 'mikens-skeletons';
 
 function MiComponente() {
   const { loading } = useLoading(2000); // Hook útil para simular cargas
 
-  return loading ? (
-    <SkeletonCard variant="with-image" animation="wave" />
-  ) : (
-    <ContenidoReal />
+  return (
+    <SkeletonWrapper loading={loading} fallback={<SkeletonCard variant="with-image" animation="wave" />}>
+      <ContenidoReal />
+    </SkeletonWrapper>
   );
 }
 ```
@@ -52,6 +54,10 @@ function MiComponente() {
 - **SkeletonProfile**: Perfiles de usuario simples o detallados.
 - **SkeletonForm**: Formularios con inputs simulados.
 - **SkeletonGrid**: Galerías de productos o imágenes.
+- **SkeletonChart**: Gráficos de barras (`variant="bar"`) y circulares (`variant="pie"`).
+- **SkeletonMedia**: Reproductores de video y audio con controles simulados.
+- **SkeletonCode**: Bloques de código tipo macOS para terminales o blogs.
+- **SkeletonWrapper**: Componente de utilidad para envolver tu contenido real sin condicionales extraños.
 
 ## Animaciones
 
