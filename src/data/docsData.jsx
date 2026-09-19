@@ -30,17 +30,17 @@ export const getDocsData = (language, animation) => {
         : 'Versatile text loading placeholders with customizable lines and widths.',
       variants: [
         {
-          label: 'Single Line',
+          label: language === 'es' ? 'Una Sola Línea' : 'Single Line',
           code: `import { SkeletonText } from 'mikens-skeletons';\n\n<SkeletonText lines={1} />`,
           render: <SkeletonText lines={1} animation={animation} />
         },
         {
-          label: 'Multiple Lines',
+          label: language === 'es' ? 'Varias Líneas' : 'Multiple Lines',
           code: `import { SkeletonText } from 'mikens-skeletons';\n\n<SkeletonText lines={3} />`,
           render: <SkeletonText lines={3} animation={animation} />
         },
         {
-          label: 'Custom Width',
+          label: language === 'es' ? 'Ancho Personalizado' : 'Custom Width',
           code: `import { SkeletonText } from 'mikens-skeletons';\n\n<SkeletonText lines={3} lastLineWidth="50%" />`,
           render: <SkeletonText lines={3} lastLineWidth="50%" animation={animation} />
         }
@@ -53,17 +53,17 @@ export const getDocsData = (language, animation) => {
         : 'Profile picture placeholders with or without text labels.',
       variants: [
         {
-          label: 'Circle Avatar',
+          label: language === 'es' ? 'Avatar Circular' : 'Circle Avatar',
           code: `import { SkeletonAvatar } from 'mikens-skeletons';\n\n<SkeletonAvatar size="60px" />`,
           render: <SkeletonAvatar size="60px" animation={animation} />
         },
         {
-          label: 'Square Avatar',
+          label: language === 'es' ? 'Avatar Cuadrado' : 'Square Avatar',
           code: `import { SkeletonAvatar } from 'mikens-skeletons';\n\n<SkeletonAvatar size="60px" shape="square" />`,
           render: <SkeletonAvatar size="60px" shape="square" animation={animation} />
         },
         {
-          label: 'Avatar with Text',
+          label: language === 'es' ? 'Avatar con Texto' : 'Avatar with Text',
           code: `import { SkeletonAvatar } from 'mikens-skeletons';\n\n<SkeletonAvatar size="60px" withText textLines={2} />`,
           render: <SkeletonAvatar size="60px" withText textLines={2} animation={animation} />
         }
@@ -76,17 +76,17 @@ export const getDocsData = (language, animation) => {
         : 'Placeholders for images with responsive dimensions.',
       variants: [
         {
-          label: 'Standard Image',
+          label: language === 'es' ? 'Imagen Estándar' : 'Standard Image',
           code: `import { SkeletonImage } from 'mikens-skeletons';\n\n<SkeletonImage height="180px" />`,
           render: <SkeletonImage height="180px" animation={animation} />
         },
         {
-          label: 'Wide Image',
+          label: language === 'es' ? 'Imagen Ancha' : 'Wide Image',
           code: `import { SkeletonImage } from 'mikens-skeletons';\n\n<SkeletonImage height="120px" />`,
           render: <SkeletonImage height="120px" animation={animation} />
         },
         {
-          label: 'Square Image',
+          label: language === 'es' ? 'Imagen Cuadrada' : 'Square Image',
           code: `import { SkeletonImage } from 'mikens-skeletons';\n\n<SkeletonImage aspectRatio="1" />`,
           render: <SkeletonImage aspectRatio="1" animation={animation} />
         }
@@ -99,17 +99,17 @@ export const getDocsData = (language, animation) => {
         : 'Loading states for buttons and action elements.',
       variants: [
         {
-          label: 'Primary Button',
+          label: language === 'es' ? 'Botón Principal' : 'Primary Button',
           code: `import { SkeletonButton } from 'mikens-skeletons';\n\n<SkeletonButton width="140px" height="44px" />`,
           render: <SkeletonButton width="140px" height="44px" animation={animation} />
         },
         {
-          label: 'Small Button',
+          label: language === 'es' ? 'Botón Pequeño' : 'Small Button',
           code: `import { SkeletonButton } from 'mikens-skeletons';\n\n<SkeletonButton width="100px" height="32px" />`,
           render: <SkeletonButton width="100px" height="32px" animation={animation} />
         },
         {
-          label: 'Full Width Button',
+          label: language === 'es' ? 'Botón Ancho Completo' : 'Full Width Button',
           code: `import { SkeletonButton } from 'mikens-skeletons';\n\n<SkeletonButton height="48px" fullWidth />`,
           render: <SkeletonButton height="48px" fullWidth animation={animation} />
         }
@@ -122,17 +122,17 @@ export const getDocsData = (language, animation) => {
         : 'Complete card layouts for different use cases.',
       variants: [
         {
-          label: 'Default Card',
+          label: language === 'es' ? 'Tarjeta Predeterminada' : 'Default Card',
           code: `import { SkeletonCard } from 'mikens-skeletons';\n\n<SkeletonCard variant="default" />`,
           render: <SkeletonCard variant="default" animation={animation} />
         },
         {
-          label: 'Card with Image',
+          label: language === 'es' ? 'Tarjeta con Imagen' : 'Card with Image',
           code: `import { SkeletonCard } from 'mikens-skeletons';\n\n<SkeletonCard variant="with-image" />`,
           render: <SkeletonCard variant="with-image" animation={animation} />
         },
         {
-          label: 'Card with Avatar',
+          label: language === 'es' ? 'Tarjeta con Avatar' : 'Card with Avatar',
           code: `import { SkeletonCard } from 'mikens-skeletons';\n\n<SkeletonCard variant="with-avatar" />`,
           render: <SkeletonCard variant="with-avatar" animation={animation} />
         }
@@ -145,12 +145,12 @@ export const getDocsData = (language, animation) => {
         : 'List placeholders perfect for feeds and directories.',
       variants: [
         {
-          label: 'Default List',
+          label: language === 'es' ? 'Lista Predeterminada' : 'Default List',
           code: `import { SkeletonList } from 'mikens-skeletons';\n\n<SkeletonList items={5} variant="default" />`,
           render: <SkeletonList items={5} variant="default" animation={animation} />
         },
         {
-          label: 'List with Avatars',
+          label: language === 'es' ? 'Lista con Avatares' : 'List with Avatars',
           code: `import { SkeletonList } from 'mikens-skeletons';\n\n<SkeletonList items={5} variant="with-avatar" />`,
           render: <SkeletonList items={5} variant="with-avatar" animation={animation} />
         }
@@ -163,17 +163,17 @@ export const getDocsData = (language, animation) => {
         : 'Data tables with multiple variants and configurations.',
       variants: [
         {
-          label: 'Default Table',
+          label: language === 'es' ? 'Tabla Predeterminada' : 'Default Table',
           code: `import { SkeletonTable } from 'mikens-skeletons';\n\n<SkeletonTable rows={5} columns={4} />`,
           render: <SkeletonTable rows={5} columns={4} animation={animation} />
         },
         {
-          label: 'Table with Actions',
+          label: language === 'es' ? 'Tabla con Acciones' : 'Table with Actions',
           code: `import { SkeletonTable } from 'mikens-skeletons';\n\n<SkeletonTable rows={4} columns={3} variant="with-actions" />`,
           render: <SkeletonTable rows={4} columns={3} variant="with-actions" animation={animation} />
         },
         {
-          label: 'Table with Avatars',
+          label: language === 'es' ? 'Tabla con Avatares' : 'Table with Avatars',
           code: `import { SkeletonTable } from 'mikens-skeletons';\n\n<SkeletonTable rows={4} columns={3} variant="with-avatars" />`,
           render: <SkeletonTable rows={4} columns={3} variant="with-avatars" animation={animation} />
         }
@@ -186,12 +186,12 @@ export const getDocsData = (language, animation) => {
         : 'User profiles with varying levels of detail.',
       variants: [
         {
-          label: 'Simple Profile',
+          label: language === 'es' ? 'Perfil Simple' : 'Simple Profile',
           code: `import { SkeletonProfile } from 'mikens-skeletons';\n\n<SkeletonProfile variant="default" />`,
           render: <SkeletonProfile variant="default" animation={animation} />
         },
         {
-          label: 'Detailed Profile',
+          label: language === 'es' ? 'Perfil Detallado' : 'Detailed Profile',
           code: `import { SkeletonProfile } from 'mikens-skeletons';\n\n<SkeletonProfile variant="detailed" />`,
           render: <SkeletonProfile variant="detailed" animation={animation} />
         }
@@ -204,12 +204,12 @@ export const getDocsData = (language, animation) => {
         : 'Pre-built forms with input fields and action buttons.',
       variants: [
         {
-          label: 'Contact Form',
+          label: language === 'es' ? 'Formulario de Contacto' : 'Contact Form',
           code: `import { SkeletonForm } from 'mikens-skeletons';\n\n<SkeletonForm fields={3} />`,
           render: <SkeletonForm fields={3} animation={animation} />
         },
         {
-          label: 'Registration Form',
+          label: language === 'es' ? 'Formulario de Registro' : 'Registration Form',
           code: `import { SkeletonForm } from 'mikens-skeletons';\n\n<SkeletonForm fields={5} />`,
           render: <SkeletonForm fields={5} animation={animation} />
         }
@@ -222,12 +222,12 @@ export const getDocsData = (language, animation) => {
         : 'Complete pre-built layouts for blog posts and articles.',
       variants: [
         {
-          label: 'Simple Blog Post',
+          label: language === 'es' ? 'Publicación Simple' : 'Simple Blog Post',
           code: `import { SkeletonBlog } from 'mikens-skeletons';\n\n<SkeletonBlog variant="default" />`,
           render: <SkeletonBlog variant="default" animation={animation} />
         },
         {
-          label: 'Blog with Image',
+          label: language === 'es' ? 'Publicación con Imagen' : 'Blog with Image',
           code: `import { SkeletonBlog } from 'mikens-skeletons';\n\n<SkeletonBlog variant="with-image" />`,
           render: <SkeletonBlog variant="with-image" animation={animation} />
         }
@@ -240,12 +240,12 @@ export const getDocsData = (language, animation) => {
         : 'Comment threads with support for nested replies.',
       variants: [
         {
-          label: 'Flat Comments',
+          label: language === 'es' ? 'Comentarios Simples' : 'Flat Comments',
           code: `import { SkeletonCommentList } from 'mikens-skeletons';\n\n<SkeletonCommentList items={4} />`,
           render: <SkeletonCommentList items={4} animation={animation} />
         },
         {
-          label: 'Comments with Replies',
+          label: language === 'es' ? 'Comentarios con Respuestas' : 'Comments with Replies',
           code: `import { SkeletonCommentList } from 'mikens-skeletons';\n\n<SkeletonCommentList items={4} withReplies />`,
           render: <SkeletonCommentList items={4} withReplies animation={animation} />
         }
@@ -258,7 +258,7 @@ export const getDocsData = (language, animation) => {
         : 'Responsive image galleries or product grids.',
       variants: [
         {
-          label: 'Product Grid',
+          label: language === 'es' ? 'Cuadrícula de Productos' : 'Product Grid',
           code: `import { SkeletonGrid } from 'mikens-skeletons';\n\n<SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" />`,
           render: <SkeletonGrid items={6} minWidth="250px" cardVariant="with-image" animation={animation} />
         }
@@ -271,7 +271,7 @@ export const getDocsData = (language, animation) => {
         : 'A complete layout for an admin panel with charts and statistics.',
       variants: [
         {
-          label: 'Admin Dashboard',
+          label: language === 'es' ? 'Panel de Control' : 'Admin Dashboard',
           code: `import { SkeletonDashboard } from 'mikens-skeletons';\n\n<SkeletonDashboard />`,
           render: <SkeletonDashboard animation={animation} />
         }
@@ -284,7 +284,7 @@ export const getDocsData = (language, animation) => {
         : 'A skeleton for an activity feed or events timeline.',
       variants: [
         {
-          label: 'Activity Timeline',
+          label: language === 'es' ? 'Línea de Tiempo de Actividad' : 'Activity Timeline',
           code: `import { SkeletonTimeline } from 'mikens-skeletons';\n\n<SkeletonTimeline items={4} />`,
           render: <SkeletonTimeline items={4} animation={animation} />
         }
@@ -297,7 +297,7 @@ export const getDocsData = (language, animation) => {
         : 'A Kanban board layout with columns and cards.',
       variants: [
         {
-          label: 'Kanban Board',
+          label: language === 'es' ? 'Tablero Kanban' : 'Kanban Board',
           code: `import { SkeletonKanban } from 'mikens-skeletons';\n\n<SkeletonKanban columns={3} cardsPerColumn={3} />`,
           render: <SkeletonKanban columns={3} cardsPerColumn={3} animation={animation} />
         }
@@ -310,7 +310,7 @@ export const getDocsData = (language, animation) => {
         : 'Product detail page with image gallery and purchase details.',
       variants: [
         {
-          label: 'Product Details',
+          label: language === 'es' ? 'Detalles del Producto' : 'Product Details',
           code: `import { SkeletonEcommerce } from 'mikens-skeletons';\n\n<SkeletonEcommerce />`,
           render: <SkeletonEcommerce animation={animation} />
         }
@@ -323,7 +323,7 @@ export const getDocsData = (language, animation) => {
         : 'Messaging interface with contact list and chat bubbles.',
       variants: [
         {
-          label: 'Chat Interface',
+          label: language === 'es' ? 'Interfaz de Chat' : 'Chat Interface',
           code: `import { SkeletonChat } from 'mikens-skeletons';\n\n<SkeletonChat />`,
           render: <SkeletonChat animation={animation} />
         }
@@ -336,7 +336,7 @@ export const getDocsData = (language, animation) => {
         : 'Pricing plan cards, highlighting the central plan.',
       variants: [
         {
-          label: 'Pricing Plans',
+          label: language === 'es' ? 'Planes de Precios' : 'Pricing Plans',
           code: `import { SkeletonPricing } from 'mikens-skeletons';\n\n<SkeletonPricing plans={3} />`,
           render: <SkeletonPricing plans={3} animation={animation} />
         }
@@ -349,7 +349,7 @@ export const getDocsData = (language, animation) => {
         : 'Metrics or KPIs widgets/cards.',
       variants: [
         {
-          label: 'Stats Cards',
+          label: language === 'es' ? 'Tarjetas de Estadísticas' : 'Stats Cards',
           code: `import { SkeletonStats } from 'mikens-skeletons';\n\n<SkeletonStats count={4} />`,
           render: <SkeletonStats count={4} animation={animation} />
         }
