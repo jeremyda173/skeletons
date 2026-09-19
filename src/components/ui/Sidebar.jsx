@@ -133,13 +133,13 @@ export function Sidebar({ activeTab, setActiveTab, isOpen, setIsOpen, language }
     {
       category: "Plantillas (Nuevo)",
       items: [
-        { id: "dashboard", label: "Dashboard" },
-        { id: "timeline", label: "Timeline" },
+        { id: "dashboard", label: "Panel de Control" },
+        { id: "timeline", label: "Línea de Tiempo" },
         { id: "kanban", label: "Kanban" },
-        { id: "ecommerce", label: "Ecommerce" },
+        { id: "ecommerce", label: "E-commerce" },
         { id: "chat", label: "Chat" },
-        { id: "pricing", label: "Pricing" },
-        { id: "stats", label: "Stats" }
+        { id: "pricing", label: "Precios" },
+        { id: "stats", label: "Estadísticas" }
       ]
     }
   ];
