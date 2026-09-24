@@ -24,7 +24,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.jsx'),
+      entry: resolve(__dirname, 'src/lib/index.jsx'),
       name: 'MikensSkeletons',
       fileName: 'mikens-skeletons',
     },
